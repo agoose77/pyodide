@@ -1,0 +1,24 @@
+From bcd58dd62861cf76eecb2669ce78039d2c871bdb Mon Sep 17 00:00:00 2001
+From: Angus Hollands <goosey15@gmail.com>
+Date: Sat, 23 Jul 2022 14:05:45 +0100
+Subject: [PATCH 2/2] Fix: use emstrip on emscripten
+
+---
+ CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b301914d..a2e1e935 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -30,6 +30,7 @@ if(APPLE)
+ elseif(EMSCRIPTEN)
+   set(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
+   set(CMAKE_BUILD_RPATH_USE_ORIGIN TRUE)
++  set(CMAKE_STRIP "emstrip")
+ else()
+   set(CMAKE_BUILD_RPATH_USE_ORIGIN TRUE)
+ endif()
+-- 
+2.34.1
+

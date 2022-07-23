@@ -1,0 +1,26 @@
+package:
+  name: awkward
+  version: 1.9.0rc8
+source:
+  url: https://files.pythonhosted.org/packages/47/96/c921c50e60edde6d1b8fe5a9d41f09cce7113ba77d2503c3a8dca1457086/awkward-1.9.0rc8.tar.gz
+  sha256: ac500b58541ccf3eb9b96211fe0d52ef01d42b2dc4d1766ea31c1b9f31607105
+  patches:
+    - patches/0001-Fix-disable-relinking-on-Emscripten.patch
+    - patches/0002-Fix-use-emstrip-on-emscripten.patch
+test:
+  imports:
+    - awkward
+build:
+  exports: whole_archive
+  script: |
+    export CMAKE_ARGS="-DEMSCRIPTEN=1"
+requirements:
+  run:
+    - numpy
+    - setuptools
+
+about:
+  home: https://github.com/scikit-hep/awkward-1.0
+  PyPI: https://pypi.org/project/awkward
+  summary: Manipulate JSON-like data with NumPy-like idioms.
+  license: BSD-3-Clause
