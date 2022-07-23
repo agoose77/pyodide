@@ -11,7 +11,12 @@ test:
   imports:
     - awkward
 build:
+  # Export all symbols
   exports: whole_archive
+  # Ensure exceptions are catchable (pybind11)
+  cxxflags: "-sDISABLE_EXCEPTION_CATCHING=0"
+  ldflags: "-sDISABLE_EXCEPTION_CATCHING=0"
+  # Notify build system we're in emscripten
   script: |
     export CMAKE_ARGS="-DEMSCRIPTEN=1"
 requirements:
